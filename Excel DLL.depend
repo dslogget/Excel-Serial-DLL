@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1556741025 source:c:\prog\c\projects\excel dll\main.c
+	"main.h"
+	"string.h"
+	"stdio.h"
+	"oleauto.h"
+
+1556741301 c:\prog\c\projects\excel dll\main.h
+	<windows.h>
+
