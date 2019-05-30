@@ -15,7 +15,7 @@ void DLL_EXPORT __stdcall WriteComm(const LPCSTR toWrite){
     //MessageBoxA(0, toWrite, "DLL Message", MB_OK | MB_ICONINFORMATION);
 
 
-    WriteFile(hComm, toWrite, 10, &bytesWritten, NULL);
+    WriteFile(hComm, toWrite, strlen(toWrite), &bytesWritten, NULL);
 }
 
 
