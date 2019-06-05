@@ -1,5 +1,5 @@
 EXPORTS
     DllMain @1
     Init @2
-    ReadComm @3
-    WriteComm @4
+    ReadStrFromComm @3
+    WriteStrToComm @4
