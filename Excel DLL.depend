@@ -8,3 +8,20 @@
 1556741301 c:\prog\c\projects\excel dll\main.h
 	<windows.h>
 
+1559737190 source:c:\users\dslog\onedrive\documents\programming\c\excel-serial-dll\main.c
+	"main.h"
+	"string.h"
+	"stdio.h"
+	"oleauto.h"
+	"SerialC/SerialC.h"
+
+1559726520 c:\users\dslog\onedrive\documents\programming\c\excel-serial-dll\main.h
+	<windows.h>
+
+1559646950 c:\users\dslog\onedrive\documents\programming\c\excel-serial-dll\serialc\serialc.h
+	<windows.h>
+	<stdlib.h>
+	<inttypes.h>
+	<string.h>
+	<stdio.h>
+
