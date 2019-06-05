@@ -8,10 +8,46 @@
 
 HANDLE hComm = INVALID_HANDLE_VALUE;
 
+
+SAFEARRAY* DLL_EXPORT __stdcall ReadRawFromComm(){
+    SAFEARRAYBOUND bounds = {0};
+    bounds.lLbound = 1;
+    uint8_t* arr;
+    uint8_t* loc;
+    DWORD size;
+    SerialC_Read(hComm, &arr, &size);
+    bounds.cElements = size;
+    //char buf[100];
+    //sprintf(buf, "%lu elements", bounds.cElements);
+    //MessageBoxA(0, buf, "DLL Message", MB_OK | MB_ICONINFORMATION);
+    SAFEARRAY* ret = SafeArrayCreate(VT_UI1, 1, &bounds);
+    SafeArrayAccessData(ret, (void**)&loc);
+    memcpy(loc, arr, bounds.cElements);
+    free(arr);
+    return ret;
+}
+
+
+void DLL_EXPORT __stdcall WriteRawToComm(SAFEARRAY** arr){
+    VARTYPE type;
+    SafeArrayGetVartype(*arr, &type);
+    if(type == VT_UI1){
+        uint8_t *data;
+        long uBound, lBound;
+        SafeArrayAccessData(*arr, (void**)&data);
+        SafeArrayGetUBound(*arr, 1, &uBound);
+        SafeArrayGetLBound(*arr, 1, &lBound);
+
+
+        SerialC_Write(hComm, data, (DWORD)(1 + uBound - lBound));
+    }else{
+        MessageBoxA(0, "Invalid type", "DLL Message", MB_OK | MB_ICONINFORMATION);
+    }
+}
+
 void DLL_EXPORT __stdcall WriteStrToComm(LPCSTR toWrite){
     SerialC_Write(hComm, (uint8_t*)toWrite, strlen(toWrite));
 }
-
 
 
 BSTR DLL_EXPORT __stdcall ReadStrFromComm(){

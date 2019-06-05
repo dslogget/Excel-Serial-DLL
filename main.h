@@ -19,6 +19,8 @@ extern "C"
 {
 #endif
 
+SAFEARRAY* DLL_EXPORT __stdcall ReadRawFromComm();
+
 void DLL_EXPORT __stdcall Init(const INT32 ComID);
 
 void DLL_EXPORT __stdcall WriteComm(const LPCSTR toWrite);
